@@ -7,11 +7,11 @@ import android.preference.ListPreference;
 import android.util.AttributeSet;
 import android.widget.ListAdapter;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
- *
  * The ColorListPreference class responsible for displaying a color for each
  * item within the list.
- *
  */
 public class ColorListPreference extends ListPreference {
 
@@ -35,7 +35,6 @@ public class ColorListPreference extends ListPreference {
 				.getTextArray(R.styleable.ColorListPreference_entryColors);
 
 		resourceIds = new String[colors.length];
-
 		System.arraycopy(colors, 0, resourceIds, 0, colors.length);
 
 		typedArray.recycle();
@@ -44,12 +43,12 @@ public class ColorListPreference extends ListPreference {
 	/**
 	 * {@inheritDoc}
 	 */
-	@Override
-	protected void onPrepareDialogBuilder(Builder builder) {
+	protected void onPrepareDialogBuilder(@NotNull Builder builder) {
 
-		if (!((getEntries().length == getEntryValues().length) && (getEntries().length == colors.length)))
+		if (!((getEntries().length == getEntryValues().length) && (getEntries().length == colors.length))) {
 			throw new AssertionError(
 					"ColorListPreference requires a complete entries array, a complete entryValues array and a complete entryColors array");
+		}
 
 		int index = findIndexOfValue(getSharedPreferences().getString(getKey(),
 				"1"));
@@ -59,5 +58,25 @@ public class ColorListPreference extends ListPreference {
 
 		builder.setAdapter(listAdapter, this);
 		super.onPrepareDialogBuilder(builder);
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
+		super.onSetInitialValue(restoreValue, defaultValue);
+
+		// I don't know if this method is the best, but it works
+		getSharedPreferences().getString(getKey() + "_color_id", "1");
+		getSharedPreferences()
+				.edit()
+				.putString(
+						getKey() + "_color_id",
+						colors[Integer.parseInt(getValue())].toString()
+								.contains("#") ? colors[Integer
+								.parseInt(getValue())].toString() : "#"
+                                + colors[Integer.parseInt(getValue())]
+                                .toString()).apply();
 	}
 }

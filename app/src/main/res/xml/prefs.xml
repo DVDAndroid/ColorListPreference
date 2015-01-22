@@ -7,6 +7,7 @@
         android:entries="@array/listNames"
         android:entryValues="@array/listValues"
         android:key="colorList"
+        android:defaultValue="2"
         android:summary="Summary"
         android:title="Title"
         app:entryColors="@array/colorsValues"/>

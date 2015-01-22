@@ -44,19 +44,22 @@ Usage
 4) You should incorporate this xml code in your preference layout:
 ```xml
 		<com.dvd.android.library.colorlistpreference.ColorListPreference
-				android:key="colorList"
-				android:title="Title"
-				android:summary="Summary"
-				android:entries="@array/listNames"
-				android:entryValues="@array/listValues"
-				app:entryColors="@array/colorsValues"/>
+                android:entries="@array/listNames"
+                android:entryValues="@array/listValues"
+                android:key="colorList"
+                android:defaultValue="2"
+                android:summary="Summary"
+                android:title="Title"
+                app:entryColors="@array/colorsValues"/>
 ```
 5) Enjoy!
 
-TODO
-----
+# To get the clicked color id do:
 
-----> Save a preference string with clicked value color
+```java
+    getSharedPreferences().getString("your_key" + "_color_id", "1");        // replace "your_key" with your preference key
+```
+
 
 LICENSE
 -------
