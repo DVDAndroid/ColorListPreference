@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.dvd.android.library.colorlistpreference.ColorListPreference
+        android:entries="@array/listNames"
+        android:entryValues="@array/listValues"
+        android:key="colorList"
+        android:summary="Summary"
+        android:title="Title"
+        app:entryColors="@array/colorsValues"/>
+
+</PreferenceScreen>
