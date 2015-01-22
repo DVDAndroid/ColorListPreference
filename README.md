@@ -53,10 +53,15 @@ Usage
 ```
 5) Enjoy!
 
-### TODO
+TODO
+----
 
 ----> Save a preference string with clicked value color
 
+LICENSE
+-------
+
+GNU GENERAL PUBLIC LICENSE v2
 
 Credits
 -------
