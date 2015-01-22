@@ -10,6 +10,7 @@ Usage
 -----
 
 1) work in progress...
+
 2) Add an entries array, entryValues array and an entryColors array in your project
 	Example: 
 ```xml
@@ -38,8 +39,9 @@ Usage
 			.....
 		</string-array>
 ```
-2) Add a XML Namespace Prefix 'xmlns:app="http://schemas.android.com/apk/res-auto"'
-3) You should incorporate this xml code in your preference layout:
+3) Add a XML Namespace Prefix `xmlns:app="http://schemas.android.com/apk/res-auto`
+
+4) You should incorporate this xml code in your preference layout:
 ```xml
 		<com.dvd.android.library.colorlistpreference.ColorListPreference
 				android:key="colorList"
@@ -49,7 +51,7 @@ Usage
 				android:entryValues="@array/listValues"
 				app:entryColors="@array/colorsValues"/>
 ```
-4) Enjoy!
+5) Enjoy!
 
 ### TODO
 
