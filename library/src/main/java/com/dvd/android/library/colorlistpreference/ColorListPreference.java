@@ -7,8 +7,6 @@ import android.preference.ListPreference;
 import android.util.AttributeSet;
 import android.widget.ListAdapter;
 
-import org.jetbrains.annotations.NotNull;
-
 /**
  * The ColorListPreference class responsible for displaying a color for each
  * item within the list.
@@ -43,7 +41,8 @@ public class ColorListPreference extends ListPreference {
 	/**
 	 * {@inheritDoc}
 	 */
-	protected void onPrepareDialogBuilder(@NotNull Builder builder) {
+	@Override
+	protected void onPrepareDialogBuilder(Builder builder) {
 
 		if (!((getEntries().length == getEntryValues().length) && (getEntries().length == colors.length))) {
 			throw new AssertionError(
@@ -76,7 +75,7 @@ public class ColorListPreference extends ListPreference {
 						colors[Integer.parseInt(getValue())].toString()
 								.contains("#") ? colors[Integer
 								.parseInt(getValue())].toString() : "#"
-                                + colors[Integer.parseInt(getValue())]
-                                .toString()).apply();
+								+ colors[Integer.parseInt(getValue())]
+										.toString()).apply();
 	}
 }

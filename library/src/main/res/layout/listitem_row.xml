@@ -8,7 +8,7 @@
                 android:layout_weight="1"
                 android:paddingLeft="?android:attr/listPreferredItemPaddingLeft"
                 android:paddingRight="?android:attr/listPreferredItemPaddingRight"
-                tools:ignore="RtlHardcoded, ContentDescription">
+                tools:ignore="ContentDescription,RtlHardcoded">
 
     <ImageView
         android:id="@+id/color"
