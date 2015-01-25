@@ -57,7 +57,13 @@ Usage
 # To get the clicked color id do:
 
 ```java
-    getSharedPreferences().getString("your_key" + "_color_id", "1");        // replace "your_key" with your preference key
+
+	ColorListPreference colorlistpreference = (ColorListPreference)getPreferenceScreen().findPreference("colorList");
+	
+	String s = colorlistpreference.getColorString();
+			// or
+	Color c = colorlistpreference.getColor();
+	
 ```
 
 
