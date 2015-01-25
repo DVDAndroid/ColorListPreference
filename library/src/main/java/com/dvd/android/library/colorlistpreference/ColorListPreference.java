@@ -3,6 +3,7 @@ package com.dvd.android.library.colorlistpreference;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.preference.ListPreference;
 import android.util.AttributeSet;
 import android.widget.ListAdapter;
@@ -60,6 +61,38 @@ public class ColorListPreference extends ListPreference {
 	}
 
 	/**
+	 * Method to return color id in a string
+	 * 
+	 * @return color value in string
+	 */
+	public String getColorString() {
+		return getSharedPreferences().getString(getKey() + "_color_id", "1");
+	}
+
+	/**
+	 * Method to return color id in a string
+	 * 
+	 * @return color value
+	 */
+	public int getColor() {
+		return Color.parseColor(getColorString());
+	}
+
+	@Override
+	protected void onDialogClosed(boolean positiveResult) {
+		super.onDialogClosed(positiveResult);
+
+		getSharedPreferences().edit().putString(getKey(), getValue()).apply();
+		getSharedPreferences()
+				.edit()
+				.putString(
+						getKey() + "_color_id",
+						resourceIds[Integer.parseInt(getValue()) - 1]
+								.toString()).apply();
+
+	}
+
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override
@@ -67,7 +100,6 @@ public class ColorListPreference extends ListPreference {
 		super.onSetInitialValue(restoreValue, defaultValue);
 
 		// I don't know if this method is the best, but it works
-		getSharedPreferences().getString(getKey() + "_color_id", "1");
 		getSharedPreferences()
 				.edit()
 				.putString(
@@ -78,4 +110,5 @@ public class ColorListPreference extends ListPreference {
 								+ colors[Integer.parseInt(getValue())]
 										.toString()).apply();
 	}
+
 }
