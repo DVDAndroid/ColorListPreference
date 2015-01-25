@@ -83,12 +83,17 @@ public class ColorListPreference extends ListPreference {
 		super.onDialogClosed(positiveResult);
 
 		getSharedPreferences().edit().putString(getKey(), getValue()).apply();
-		getSharedPreferences()
-				.edit()
-				.putString(
-						getKey() + "_color_id",
-						resourceIds[Integer.parseInt(getValue()) - 1]
-								.toString()).apply();
+
+		String color_id;
+		if (resourceIds[Integer.parseInt(getValue()) - 1].toString().contains(
+				"#")) {
+			color_id = resourceIds[Integer.parseInt(getValue()) - 1].toString();
+		} else {
+			color_id = "#"
+					+ resourceIds[Integer.parseInt(getValue()) - 1].toString();
+		}
+		getSharedPreferences().edit()
+				.putString(getKey() + "_color_id", color_id).apply();
 
 	}
 
