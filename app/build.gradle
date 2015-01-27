@@ -21,5 +21,5 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':library')
+    compile 'com.github.dvdandroid:colorlistpreference:1.0.0'
 }

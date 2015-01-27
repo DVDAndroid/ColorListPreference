@@ -5,9 +5,9 @@
 .DS_Store
 /build
 
-/library/src/androidTest/java/com/dvd/android/library/colorlistpreference
-/app/src/androidTest/java/com/dvd/android/colorlistpreference
-/library/build
+library/src/androidTest/java/com/dvd/android/library/colorlistpreference
+app/src/androidTest/java/com/dvd/android/colorlistpreference
+library/build
 library/gpg.gpg
 library/proguard-rules.pro
 app/proguard-rules.pro
@@ -36,3 +36,5 @@ local.properties
 /*/out
 /*/*/build
 /*/*/production
+build_output.txt
+manifest-merger-release-report.txt
