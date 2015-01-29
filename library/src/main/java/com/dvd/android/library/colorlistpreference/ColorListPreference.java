@@ -123,15 +123,16 @@ public class ColorListPreference extends ListPreference {
 		super.onSetInitialValue(restoreValue, defaultValue);
 
 		// I don't know if this method is the best, but it works
-		getSharedPreferences()
-				.edit()
-				.putString(
-						getKey() + "_color_id",
-						colors[Integer.parseInt(getValue())].toString()
-								.contains("#") ? colors[Integer
-								.parseInt(getValue())].toString() : "#"
-								+ colors[Integer.parseInt(getValue())]
-										.toString()).apply();
+		String color_id;
+		if (colors[Integer.parseInt(getValue()) - 1].toString().contains("#")) {
+			color_id = colors[Integer.parseInt(getValue()) - 1].toString();
+		} else {
+			color_id = "#"
+					+ colors[Integer.parseInt(getValue()) - 1].toString();
+		}
+
+		getSharedPreferences().edit()
+				.putString(getKey() + "_color_id", color_id).apply();
 	}
 
 }
