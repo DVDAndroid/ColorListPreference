@@ -11,7 +11,7 @@ Android Studio setup
 Add this on build.gradle
 ```groovy
 	dependencies {
-    		compile 'com.github.dvdandroid:colorlistpreference:1.0.5'
+    		compile 'com.github.dvdandroid:colorlistpreference:1.5.0'
     }
 ```
 
