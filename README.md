@@ -5,24 +5,16 @@ Library for add a custom list preference with a preview of the color
 
 ![screenshot](screenshot.gif)
 
-Android Studio setup
---------------------
-
-Add this on build.gradle
-```groovy
-	dependencies {
-    		compile 'com.github.dvdandroid:colorlistpreference:1.5.0'
-    }
-```
-
-Eclipse setup
--------------
-
-Download this [JAR](http://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=com.github.dvdandroid&a=colorlistpreference&v=LATEST&&c=jar) and add it in build path.
-
 Usage
 -----
 
+1) Add this on build.gradle
+
+```groovy
+	dependencies {
+    		compile 'com.github.dvdandroid:colorlistpreference:1.5.5'
+    }
+```
 2) Add an entries array, entryValues array and an entryColors array in your project
 	Example: 
 ```xml
