@@ -61,6 +61,16 @@ public class ColorListPreference extends ListPreference {
 	 * {@inheritDoc}
 	 */
 	@Override
+	public void setValue(String value) {
+		super.setValue(value);
+
+		updateColor();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
 	protected void onPrepareDialogBuilder(Builder builder) {
 
 		if (!((getEntries().length == getEntryValues().length) && (getEntries().length == colors.length))) {
@@ -80,7 +90,7 @@ public class ColorListPreference extends ListPreference {
 
 	/**
 	 * Method to return color id in a string
-	 * 
+	 *
 	 * @return color value in string
 	 */
 	public String getColorString() {
@@ -89,7 +99,7 @@ public class ColorListPreference extends ListPreference {
 
 	/**
 	 * Method to return color id in a string
-	 * 
+	 *
 	 * @return color value
 	 */
 	public int getColor() {
@@ -100,18 +110,10 @@ public class ColorListPreference extends ListPreference {
 	protected void onDialogClosed(boolean positiveResult) {
 		super.onDialogClosed(positiveResult);
 
+		// I don't know if it's right
 		getSharedPreferences().edit().putString(getKey(), getValue()).apply();
 
-		String color_id;
-		if (resourceIds[Integer.parseInt(getValue()) - 1].toString().contains(
-				"#")) {
-			color_id = resourceIds[Integer.parseInt(getValue()) - 1].toString();
-		} else {
-			color_id = "#"
-					+ resourceIds[Integer.parseInt(getValue()) - 1].toString();
-		}
-		getSharedPreferences().edit()
-				.putString(getKey() + "_color_id", color_id).apply();
+		updateColor();
 
 	}
 
@@ -122,6 +124,10 @@ public class ColorListPreference extends ListPreference {
 	protected void onSetInitialValue(boolean restoreValue, Object defaultValue) {
 		super.onSetInitialValue(restoreValue, defaultValue);
 
+		updateColor();
+	}
+
+	private void updateColor() {
 		// I don't know if this method is the best, but it works
 		String color_id;
 		if (colors[Integer.parseInt(getValue()) - 1].toString().contains("#")) {
@@ -134,5 +140,4 @@ public class ColorListPreference extends ListPreference {
 		getSharedPreferences().edit()
 				.putString(getKey() + "_color_id", color_id).apply();
 	}
-
 }
